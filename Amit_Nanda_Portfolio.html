@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amit Kumar Nanda — FP&A Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+:root{--navy:#0D1E35;--blue:#185FA5;--light-blue:#E6F1FB;--mid-blue:#B5D4F4;--text:#1A1A1A;--muted:#555;--border:#E2E8F0;--bg:#F8FAFC;--white:#FFFFFF;--green:#27500A;--green-bg:#EAF3DE;--amber:#633806;--amber-bg:#FAEEDA}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;background:rgba(13,30,53,0.97);backdrop-filter:blur(10px);z-index:1000;padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)}
+.nav-brand{font-size:15px;font-weight:600;color:#fff;letter-spacing:-0.3px}
+.nav-brand span{color:#38BDF8}
+.nav-links{display:flex;gap:4px}
+.nav-link{color:rgba(255,255,255,0.6);font-size:13px;padding:6px 12px;border-radius:6px;cursor:pointer;transition:all 0.2s;border:none;background:none;font-family:'Inter',sans-serif}
+.nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,0.1)}
+.nav-cta{background:#185FA5;color:#fff;font-size:12px;font-weight:500;padding:7px 16px;border-radius:20px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.2s}
+.nav-cta:hover{background:#0C447C}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 60% 40%, rgba(24,95,165,0.15) 0%, transparent 60%)}
+.hero-content{position:relative;z-index:1;max-width:700px}
+.hero-avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#185FA5,#38BDF8);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;color:#fff;margin:0 auto 1.5rem;border:3px solid rgba(255,255,255,0.1)}
+.hero-name{font-size:42px;font-weight:700;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.hero-role{font-size:16px;color:#38BDF8;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:16px}
+.hero-bio{font-size:15px;color:rgba(255,255,255,0.6);max-width:520px;margin:0 auto 2rem;line-height:1.8}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:2rem}
+.badge{font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid}
+.badge-blue{background:rgba(56,189,248,0.1);color:#38BDF8;border-color:rgba(56,189,248,0.3)}
+.badge-green{background:rgba(74,222,128,0.1);color:#4ADE80;border-color:rgba(74,222,128,0.3)}
+.badge-amber{background:rgba(251,191,36,0.1);color:#FBB924;border-color:rgba(251,191,36,0.3)}
+.hero-btns{display:flex;gap:12px;justify-content:center}
+.btn-primary{background:#185FA5;color:#fff;padding:12px 28px;border-radius:8px;border:none;cursor:pointer;font-size:14px;font-weight:500;font-family:'Inter',sans-serif;transition:all 0.2s}
+.btn-primary:hover{background:#0C447C;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:#fff;padding:12px 28px;border-radius:8px;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:14px;font-weight:500;font-family:'Inter',sans-serif;transition:all 0.2s}
+.btn-outline:hover{background:rgba(255,255,255,0.08)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:6px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+.scroll-arrow{width:20px;height:20px;border-right:2px solid rgba(255,255,255,0.3);border-bottom:2px solid rgba(255,255,255,0.3);transform:rotate(45deg)}
+
+/* SECTIONS */
+section{padding:80px 2rem;max-width:900px;margin:0 auto}
+.section-tag{font-size:11px;font-weight:600;color:#185FA5;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px}
+.section-title{font-size:28px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.5px}
+.section-sub{font-size:15px;color:var(--muted);margin-bottom:2.5rem;max-width:500px}
+.section-divider{height:1px;background:var(--border);margin:0 2rem}
+
+/* METRICS */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:3rem}
+.metric-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 16px;text-align:center;position:relative;overflow:hidden}
+.metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#185FA5,#38BDF8)}
+.metric-val{font-size:32px;font-weight:700;color:#185FA5;line-height:1}
+.metric-label{font-size:12px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:0.04em;line-height:1.4}
+
+/* EXPERIENCE */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#185FA5,#E2E8F0)}
+.timeline-item{position:relative;margin-bottom:2rem}
+.timeline-dot{position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:#185FA5;border:2px solid #fff;box-shadow:0 0 0 3px #E6F1FB}
+.exp-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:box-shadow 0.2s}
+.exp-card:hover{box-shadow:0 4px 20px rgba(24,95,165,0.08)}
+.exp-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.exp-meta{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.exp-co{font-size:13px;color:#185FA5;font-weight:500}
+.exp-sep{color:var(--border);font-size:12px}
+.exp-date{font-size:12px;color:var(--muted);background:var(--bg);padding:3px 8px;border-radius:4px;border:1px solid var(--border)}
+.exp-rating{font-size:12px;color:var(--green);background:var(--green-bg);padding:3px 8px;border-radius:4px;font-weight:500}
+.exp-bullets{list-style:none;padding:0}
+.exp-bullets li{font-size:13px;color:var(--muted);padding:4px 0 4px 16px;position:relative;line-height:1.6}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:#185FA5;font-size:11px;top:5px}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:all 0.2s;cursor:default}
+.proj-card:hover{border-color:#B5D4F4;transform:translateY(-2px);box-shadow:0 8px 24px rgba(24,95,165,0.1)}
+.proj-icon{width:40px;height:40px;border-radius:10px;background:var(--light-blue);display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:18px}
+.proj-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;line-height:1.4}
+.proj-badge{display:inline-block;font-size:10px;font-weight:500;padding:3px 8px;border-radius:4px;background:var(--light-blue);color:#0C447C;margin-bottom:8px}
+.proj-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+.tag-row{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:11px;padding:3px 8px;border-radius:4px;background:var(--bg);color:var(--muted);border:1px solid var(--border)}
+
+/* SKILLS */
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.skill-bar{margin-bottom:14px}
+.skill-meta{display:flex;justify-content:space-between;margin-bottom:5px}
+.skill-name{font-size:13px;font-weight:500;color:var(--text)}
+.skill-pct{font-size:13px;color:#185FA5;font-weight:600}
+.skill-track{background:var(--border);border-radius:4px;height:6px;overflow:hidden}
+.skill-fill{height:6px;border-radius:4px;background:linear-gradient(90deg,#185FA5,#38BDF8);width:0;transition:width 1.5s cubic-bezier(0.4,0,0.2,1)}
+.pills-section{margin-top:1.5rem}
+.pills-label{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text);background:var(--white)}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cert-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem;display:flex;gap:10px;align-items:flex-start}
+.cert-icon{width:32px;height:32px;border-radius:8px;background:var(--light-blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:#185FA5}
+.cert-name{font-size:12px;font-weight:500;color:var(--text);line-height:1.4}
+.cert-issuer{font-size:11px;color:var(--muted);margin-top:3px}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.edu-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden}
+.edu-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#185FA5,#38BDF8)}
+.edu-deg{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.edu-uni{font-size:13px;color:#185FA5;font-weight:500;margin-bottom:4px}
+.edu-meta{font-size:12px;color:var(--muted)}
+.edu-cgpa{display:inline-block;margin-top:8px;font-size:13px;font-weight:600;color:var(--green);background:var(--green-bg);padding:4px 10px;border-radius:6px}
+
+/* CONTACT */
+.contact-section{background:var(--navy);padding:80px 2rem;text-align:center}
+.contact-inner{max-width:500px;margin:0 auto}
+.contact-title{font-size:32px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-0.5px}
+.contact-sub{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:2rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
+.contact-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px;display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.7);font-size:13px}
+.contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(24,95,165,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;color:#38BDF8;flex-shrink:0}
+.contact-mailto{display:inline-block;background:#185FA5;color:#fff;padding:14px 32px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;transition:background 0.2s;margin-bottom:1rem}
+.contact-mailto:hover{background:#0C447C}
+.footer-note{font-size:12px;color:rgba(255,255,255,0.25);margin-top:2rem}
+
+/* ANIMATE */
+.animate{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.animate.visible{opacity:1;transform:translateY(0)}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:2px;background:rgba(255,255,255,0.1);z-index:999}
+.progress-fill{height:100%;background:linear-gradient(90deg,#185FA5,#38BDF8);width:0;transition:width 0.1s}
+
+/* DASHBOARD PREVIEW */
+.dash-preview{background:var(--navy);border-radius:16px;padding:1.5rem;margin-top:1rem;border:1px solid rgba(255,255,255,0.08)}
+.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+.dash-title-text{font-size:13px;font-weight:500;color:rgba(255,255,255,0.7)}
+.dash-live{font-size:10px;color:#4ADE80;background:rgba(74,222,128,0.1);padding:3px 8px;border-radius:4px;border:1px solid rgba(74,222,128,0.3);display:flex;align-items:center;gap:4px}
+.dash-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem}
+.kpi{background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;text-align:center}
+.kpi-val{font-size:20px;font-weight:600;color:#38BDF8}
+.kpi-label{font-size:10px;color:rgba(255,255,255,0.4);margin-top:3px;text-transform:uppercase;letter-spacing:0.04em}
+.kpi-neg{color:#F87171}
+.chart-area{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chart-box{background:rgba(255,255,255,0.03);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.06)}
+.chart-title-text{font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:70px}
+.bar-group{flex:1;display:flex;gap:2px;align-items:flex-end}
+.bar{flex:1;border-radius:2px 2px 0 0;transition:height 1s ease}
+.bar-a{background:#185FA5}
+.bar-b{background:rgba(24,95,165,0.35)}
+.bar-lbl{font-size:9px;color:rgba(255,255,255,0.3);text-align:center;margin-top:4px}
+.line-chart{display:flex;align-items:flex-end;gap:4px;height:70px}
+.line-dot{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+.dot-val{width:6px;height:6px;border-radius:50%;background:#38BDF8}
+.dot-lbl{font-size:8px;color:rgba(255,255,255,0.25)}
+.legend{display:flex;gap:12px;margin-top:8px}
+.leg-item{display:flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,0.4)}
+.leg-dot{width:8px;height:8px;border-radius:2px}
+
+@media(max-width:600px){
+.metrics-grid{grid-template-columns:repeat(2,1fr)}
+.projects-grid{grid-template-columns:1fr}
+.skills-layout{grid-template-columns:1fr}
+.certs-grid{grid-template-columns:1fr 1fr}
+.edu-grid{grid-template-columns:1fr}
+.contact-grid{grid-template-columns:1fr}
+.nav-links{display:none}
+.hero-name{font-size:28px}
+.chart-area{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<nav>
+  <div class="nav-brand">Amit <span>Nanda</span></div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="scrollTo('hero')">Home</button>
+    <button class="nav-link" onclick="scrollTo('about')">About</button>
+    <button class="nav-link" onclick="scrollTo('experience')">Experience</button>
+    <button class="nav-link" onclick="scrollTo('projects')">Projects</button>
+    <button class="nav-link" onclick="scrollTo('skills')">Skills</button>
+    <button class="nav-link" onclick="scrollTo('certifications')">Certs</button>
+    <button class="nav-link" onclick="scrollTo('contact')">Contact</button>
+  </div>
+  <button class="nav-cta" onclick="window.location.href='mailto:amitkn2@gmail.com'">Hire Me</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-avatar">AN</div>
+    <div class="hero-name">Amit Kumar Nanda</div>
+    <div class="hero-role">FP&A Analyst &nbsp;·&nbsp; Financial Planning & Analysis</div>
+    <div class="hero-bio">MBA Applied Finance graduate with hands-on experience in financial modelling, MIS reporting, variance analysis, and Power BI dashboards. PwC-certified. Immediate joiner open to PAN India.</div>
+    <div class="badge-row">
+      <span class="badge badge-blue">Open to Work</span>
+      <span class="badge badge-green">Immediate Joiner</span>
+      <span class="badge badge-amber">MBA Applied Finance</span>
+      <span class="badge badge-blue">PwC Certified</span>
+      <span class="badge badge-blue">Power BI</span>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="window.location.href='mailto:amitkn2@gmail.com'">Get in Touch</button>
+      <button class="btn-outline" onclick="scrollTo('projects')">View Projects</button>
+    </div>
+    <div class="hero-scroll"><span>Scroll down</span><div class="scroll-arrow"></div></div>
+  </div>
+</div>
+
+<!-- ABOUT / METRICS -->
+<section id="about">
+  <div class="animate">
+    <div class="section-tag">By the numbers</div>
+    <div class="section-title">What I've delivered</div>
+    <div class="section-sub">Real work. Real outcomes. Real credentials.</div>
+  </div>
+  <div class="metrics-grid animate">
+    <div class="metric-card"><div class="metric-val">100+</div><div class="metric-label">MSME loans analyzed at SBI</div></div>
+    <div class="metric-card"><div class="metric-val">20+</div><div class="metric-label">live sanction cases modelled</div></div>
+    <div class="metric-card"><div class="metric-val">~20%</div><div class="metric-label">TAT reduction achieved</div></div>
+    <div class="metric-card"><div class="metric-val">5</div><div class="metric-label">professional certifications</div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="animate">
+    <div class="section-tag">Career</div>
+    <div class="section-title">Professional experience</div>
+    <div class="section-sub">Hands-on finance work in real institutional environments.</div>
+  </div>
+  <div class="timeline animate">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="exp-card">
+        <div class="exp-title">FP&A & Financial Planning Analyst Intern</div>
+        <div class="exp-meta">
+          <span class="exp-co">State Bank of India &nbsp;·&nbsp; LHO, Bhubaneswar</span>
+          <span class="exp-sep">|</span>
+          <span class="exp-date">May – Jul 2025</span>
+          <span class="exp-rating">★ Excellent Rating</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built Excel financial model (working capital, variance, DSCR, ratios) deployed across 20+ live MSME sanction cases under Chief Manager — enabling structured credit decisions for digital lending vertical.</li>
+          <li>Redesigned weekly financial reporting workflow — standardised MIS templates reducing documentation TAT by ~20% and improving accuracy of leadership performance reports.</li>
+          <li>Collected and analysed financial data across 100+ loan cases — compiled weekly disbursement analytics presented directly to senior leadership.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="exp-card">
+        <div class="exp-title">Research Analyst Intern</div>
+        <div class="exp-meta">
+          <span class="exp-co">AICTE – TULIP &nbsp;·&nbsp; Govt. of India &nbsp;·&nbsp; Odisha</span>
+          <span class="exp-sep">|</span>
+          <span class="exp-date">May 2023</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Collected, cleaned and analysed primary field datasets — delivered structured analytical reports to government stakeholders with rigorous data-quality standards.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="animate">
+    <div class="section-tag">Work</div>
+    <div class="section-title">Key projects</div>
+    <div class="section-sub">Finance models, dashboards, and audits built on real data.</div>
+  </div>
+
+  <div class="animate">
+    <div class="section-tag" style="margin-bottom:8px">Live dashboard preview</div>
+    <div class="dash-preview">
+      <div class="dash-header">
+        <div class="dash-title-text">FP&A Dashboard — EBITDA & Revenue Analysis</div>
+        <div class="dash-live">Live</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-val">421M</div><div class="kpi-label">Revenue actual</div></div>
+        <div class="kpi"><div class="kpi-val">143M</div><div class="kpi-label">EBITDA actual</div></div>
+        <div class="kpi"><div class="kpi-val kpi-neg">-5M</div><div class="kpi-label">EBITDA variance</div></div>
+      </div>
+      <div class="chart-area">
+        <div class="chart-box">
+          <div class="chart-title-text">Revenue by business unit — actual vs budget</div>
+          <div class="bar-chart" id="barChart">
+            <div style="flex:1"><div class="bar-group"><div class="bar bar-a" style="height:0" data-h="54"></div><div class="bar bar-b" style="height:0" data-h="50"></div></div><div class="bar-lbl">Digital</div></div>
+            <div style="flex:1"><div class="bar-group"><div class="bar bar-a" style="height:0" data-h="42"></div><div class="bar bar-b" style="height:0" data-h="45"></div></div><div class="bar-lbl">Corporate</div></div>
+            <div style="flex:1"><div class="bar-group"><div class="bar bar-a" style="height:0" data-h="40"></div><div class="bar bar-b" style="height:0" data-h="42"></div></div><div class="bar-lbl">Retail</div></div>
+          </div>
+          <div class="legend">
+            <div class="leg-item"><div class="leg-dot" style="background:#185FA5"></div>Actual</div>
+            <div class="leg-item"><div class="leg-dot" style="background:rgba(24,95,165,0.35)"></div>Budget</div>
+          </div>
+        </div>
+        <div class="chart-box">
+          <div class="chart-title-text">EBITDA trend by month</div>
+          <div class="line-chart" id="lineChart">
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:38px" data-mb="38"></div><div class="dot-lbl">Jan</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:42px" data-mb="42"></div><div class="dot-lbl">Feb</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:35px" data-mb="35"></div><div class="dot-lbl">Mar</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:50px" data-mb="50"></div><div class="dot-lbl">Apr</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:30px" data-mb="30"></div><div class="dot-lbl">May</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:25px" data-mb="25"></div><div class="dot-lbl">Jun</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:32px" data-mb="32"></div><div class="dot-lbl">Jul</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:28px" data-mb="28"></div><div class="dot-lbl">Aug</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:44px" data-mb="44"></div><div class="dot-lbl">Sep</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:48px" data-mb="48"></div><div class="dot-lbl">Oct</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:22px" data-mb="22"></div><div class="dot-lbl">Nov</div></div>
+            <div class="line-dot"><div class="dot-val" style="margin-bottom:55px" data-mb="55"></div><div class="dot-lbl">Dec</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="projects-grid animate">
+    <div class="proj-card">
+      <div class="proj-icon">📊</div>
+      <div class="proj-title">Power BI — Revenue & Profitability Dashboard</div>
+      <div class="proj-badge">PwC Manager Evaluated</div>
+      <div class="proj-desc">Multi-page FP&A dashboard with 15+ DAX measures (CALCULATE, SAMEPERIODLASTYEAR, RANKX). Star-schema data model. Passed written test and live presentation by visiting PwC Manager.</div>
+      <div class="tag-row"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">FP&A</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon">📈</div>
+      <div class="proj-title">Excel Financial Model — Variance & Planning Analysis</div>
+      <div class="proj-badge">SBI · 20+ Live Cases</div>
+      <div class="proj-desc">Dynamic planning model integrating working capital ratios, cash flow indicators, and variance tracking — deployed in live institutional environment across 20+ active cases.</div>
+      <div class="tag-row"><span class="tag">Excel</span><span class="tag">Variance Analysis</span><span class="tag">Financial Modelling</span><span class="tag">DSCR</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon">🌱</div>
+      <div class="proj-title">ESG Audit & BRSR Report — Reliance Industries</div>
+      <div class="proj-badge">Presented to PwC Manager</div>
+      <div class="proj-desc">Audited ESG disclosures across GRI/SEBI BRSR Principles 1–9. Flagged 4 material non-disclosures including Scope 1&2 GHG and diversity ratios. Report acknowledged for regulatory alignment.</div>
+      <div class="tag-row"><span class="tag">ESG</span><span class="tag">BRSR</span><span class="tag">GRI Standards</span><span class="tag">Audit</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon">🎯</div>
+      <div class="proj-title">Infosys FP&A Dashboard — Real Data Analysis</div>
+      <div class="proj-badge">Self-Built · Real Data</div>
+      <div class="proj-desc">3-page Power BI dashboard analyzing EBITDA actual vs budget variance, revenue performance by business unit, and profitability insights using real Infosys financial data.</div>
+      <div class="tag-row"><span class="tag">Power BI</span><span class="tag">FP&A</span><span class="tag">Variance Analysis</span><span class="tag">Real Data</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="animate">
+    <div class="section-tag">Capabilities</div>
+    <div class="section-title">Skills & expertise</div>
+    <div class="section-sub">Tools and frameworks I use to deliver finance insights.</div>
+  </div>
+  <div class="skills-layout animate">
+    <div>
+      <div class="skill-bar"><div class="skill-meta"><span class="skill-name">Advanced Excel</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" data-w="90"></div></div></div>
+      <div class="skill-bar"><div class="skill-meta"><span class="skill-name">Power BI & DAX</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-fill" data-w="82"></div></div></div>
+      <div class="skill-bar"><div class="skill-meta"><span class="skill-name">Financial Modelling</span><span class="skill-pct">78%</span></div><div class="skill-track"><div class="skill-fill" data-w="78"></div></div></div>
+    </div>
+    <div>
+      <div class="skill-bar"><div class="skill-meta"><span class="skill-name">TallyPrime & ERP</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" data-w="80"></div></div></div>
+      <div class="skill-bar"><div class="skill-meta"><span class="skill-name">Variance Analysis</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill" data-w="75"></div></div></div>
+      <div class="skill-bar"><div class="skill-meta"><span class="skill-name">SQL</span><span class="skill-pct">45%</span></div><div class="skill-track"><div class="skill-fill" data-w="45"></div></div></div>
+    </div>
+  </div>
+  <div class="pills-section animate">
+    <div class="pills-label">Core competencies</div>
+    <div class="pills">
+      <span class="pill">FP&A</span><span class="pill">Budgeting & Forecasting</span><span class="pill">MIS Reporting</span><span class="pill">Variance Analysis</span><span class="pill">P&L Analysis</span><span class="pill">Working Capital</span><span class="pill">DCF</span><span class="pill">Financial Accounting</span><span class="pill">Ind AS</span><span class="pill">GST & AP/AR</span><span class="pill">Six Sigma DMAIC</span><span class="pill">Lean Accounting</span><span class="pill">BRSR & ESG</span><span class="pill">Agile & SDLC</span><span class="pill">Stakeholder Reporting</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="animate">
+    <div class="section-tag">Credentials</div>
+    <div class="section-title">Certifications</div>
+    <div class="section-sub">Verified credentials from industry-recognised institutions.</div>
+  </div>
+  <div class="certs-grid animate">
+    <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">Financial Modelling & Audit</div><div class="cert-issuer">PwC · Jan 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">Audit & Assurance</div><div class="cert-issuer">PwC · 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">📜</div><div><div class="cert-name">NISM/SEBI Financial Literacy</div><div class="cert-issuer">SEBI · May 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">📜</div><div><div class="cert-name">NPA & Credit Risk — Banks/NBFCs</div><div class="cert-issuer">Chandigarh University · 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon">📜</div><div><div class="cert-name">Spreadsheet Financial Decision Making</div><div class="cert-issuer">2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🎓</div><div><div class="cert-name">MBA — Applied Finance</div><div class="cert-issuer">Chandigarh University · CGPA 7.54</div></div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="animate">
+    <div class="section-tag">Education</div>
+    <div class="section-title">Academic background</div>
+    <div class="section-sub">Finance education built on a strong analytical foundation.</div>
+  </div>
+  <div class="edu-grid animate">
+    <div class="edu-card">
+      <div class="edu-deg">MBA — Applied Finance</div>
+      <div class="edu-uni">Chandigarh University</div>
+      <div class="edu-meta">2024 – Graduating July 2026</div>
+      <div class="edu-cgpa">CGPA: 7.54 / 10</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-deg">B.Tech — Civil Engineering</div>
+      <div class="edu-uni">KIIT University, Bhubaneswar</div>
+      <div class="edu-meta">2019 – 2023</div>
+      <div class="edu-cgpa">CGPA: 7.8 / 10</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-title">Let's connect</div>
+    <div class="contact-sub">Open to FP&A, Financial Analyst, and Business Analyst roles across Bengaluru, Hyderabad, and PAN India. Immediate joiner.</div>
+    <div class="contact-grid">
+      <div class="contact-item"><div class="contact-icon">✉</div>amitkn2@gmail.com</div>
+      <div class="contact-item"><div class="contact-icon">📞</div>+91 89175 73729</div>
+      <div class="contact-item"><div class="contact-icon">💼</div>linkedin.com/in/amitknanda</div>
+      <div class="contact-item"><div class="contact-icon">📍</div>Bhubaneswar, Odisha</div>
+    </div>
+    <a class="contact-mailto" href="mailto:amitkn2@gmail.com">Send me an email</a>
+    <div class="footer-note">Amit Kumar Nanda · FP&A Analyst · Built 2026</div>
+  </div>
+</div>
+
+<script>
+function scrollTo(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=(window.scrollY/h)*100;
+  document.getElementById('progress').style.width=pct+'%';
+
+  const sections=['hero','about','experience','projects','skills','certifications','contact'];
+  const links=document.querySelectorAll('.nav-link');
+  let current='hero';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&window.scrollY>=el.offsetTop-100) current=id;
+  });
+  links.forEach((l,i)=>{
+    l.classList.toggle('active',sections[i]===current);
+  });
+
+  document.querySelectorAll('.animate').forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    if(rect.top<window.innerHeight-80) el.classList.add('visible');
+  });
+});
+
+setTimeout(()=>{
+  document.querySelectorAll('.animate').forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    if(rect.top<window.innerHeight) el.classList.add('visible');
+  });
+
+  setTimeout(()=>{
+    document.querySelectorAll('.skill-fill').forEach(b=>{ b.style.width=b.dataset.w+'%' });
+    document.querySelectorAll('#barChart .bar').forEach(b=>{ b.style.height=b.dataset.h+'px' });
+  },800);
+},300);
+</script>
+</body>
+</html>
