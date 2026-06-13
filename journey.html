@@ -6,13 +6,14 @@
   <title>Modern Scrolling Journey</title>
   <style>
     :root {
-      --primary: #6366f1;
-      --secondary: #ec4899;
-      --accent: #14b8a6;
-      --dark: #0f172a;
-      --darker: #0a0f1f;
-      --light: #f1f5f9;
-      --gray: #64748b;
+      --primary: #00d9ff;
+      --secondary: #ff006e;
+      --accent: #ffbe0b;
+      --glow: #00d9ff;
+      --dark: #0a0e27;
+      --darker: #000000;
+      --light: #ffffff;
+      --gray: #8892b0;
     }
 
     * {
@@ -27,7 +28,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+      background: linear-gradient(135deg, #000000 0%, #0a0e27 100%);
       color: var(--light);
       overflow-x: hidden;
       line-height: 1.6;
@@ -38,7 +39,7 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: var(--dark);
+      background: var(--darker);
     }
 
     ::-webkit-scrollbar-thumb {
@@ -46,28 +47,19 @@
       border-radius: 6px;
     }
 
-    .timeline-pathway {
-      position: fixed;
-      left: 50%;
-      top: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(180deg, var(--primary), var(--secondary), var(--accent));
-      transform: translateX(-50%);
-      z-index: 1;
-      opacity: 0.3;
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, var(--secondary), var(--accent));
     }
 
-    .timeline-progress {
+    /* Zigzag Path Canvas */
+    #scrollCanvas {
       position: fixed;
-      left: 50%;
       top: 0;
-      width: 4px;
-      height: 0%;
-      background: linear-gradient(180deg, var(--primary), var(--secondary), var(--accent));
-      transform: translateX(-50%);
-      z-index: 2;
-      transition: height 0.1s ease-out;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
     }
 
     .hero {
@@ -79,6 +71,7 @@
       position: relative;
       overflow: hidden;
       padding: 2rem;
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(255, 0, 110, 0.05) 100%);
     }
 
     .hero::before {
@@ -88,7 +81,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
       animation: float 30s ease-in-out infinite;
       z-index: 0;
     }
@@ -125,6 +118,7 @@
       background-clip: text;
       line-height: 1.1;
       letter-spacing: -2px;
+      text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
     }
 
     .hero p {
@@ -156,6 +150,7 @@
       height: 24px;
       border: 2px solid var(--primary);
       border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary), inset 0 0 10px var(--primary);
     }
 
     .container {
@@ -171,6 +166,7 @@
       justify-content: center;
       padding: 6rem 2rem;
       position: relative;
+      background: linear-gradient(135deg, rgba(10, 14, 39, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
     }
 
     .timeline-section.left {
@@ -179,41 +175,6 @@
 
     .timeline-section.right {
       justify-content: flex-end;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border: 4px solid var(--darker);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      opacity: 0;
-      animation: dotAppear 0.6s ease-out forwards;
-    }
-
-    @keyframes dotAppear {
-      from {
-        opacity: 0;
-        scale: 0;
-      }
-      to {
-        opacity: 1;
-        scale: 1;
-      }
-    }
-
-    .timeline-dot.active {
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes dotPulse {
-      0%, 100% { scale: 1; }
-      50% { scale: 1.3; }
     }
 
     .timeline-content {
@@ -238,20 +199,21 @@
     }
 
     .timeline-card {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.05));
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 110, 0.05));
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(99, 102, 241, 0.2);
+      border: 2px solid rgba(0, 217, 255, 0.3);
       padding: 2rem;
       border-radius: 20px;
       transition: all 0.4s ease;
       cursor: pointer;
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
     }
 
     .timeline-card:hover {
       border-color: var(--primary);
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(236, 72, 153, 0.1));
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(255, 0, 110, 0.1));
       transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+      box-shadow: 0 0 50px rgba(0, 217, 255, 0.3), 0 20px 40px rgba(0, 0, 0, 0.5);
     }
 
     .timeline-year {
@@ -261,6 +223,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
     }
 
     .timeline-title {
@@ -277,18 +240,20 @@
 
     .skills-section {
       padding: 6rem 2rem;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(10, 14, 39, 0.5) 100%);
     }
 
     .section-title {
       font-size: 3rem;
       text-align: center;
       margin-bottom: 4rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       opacity: 0;
       animation: titleAppear 0.8s ease-out 0.3s forwards;
+      text-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
     }
 
     @keyframes titleAppear {
@@ -310,13 +275,14 @@
     }
 
     .skill-card {
-      background: rgba(99, 102, 241, 0.05);
-      border: 1px solid rgba(99, 102, 241, 0.2);
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(255, 0, 110, 0.05));
+      border: 2px solid rgba(0, 217, 255, 0.2);
       padding: 2rem;
       border-radius: 15px;
       opacity: 0;
       animation: skillAppear 0.6s ease-out forwards;
       transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
     }
 
     .skill-card:nth-child(1) { animation-delay: 0.1s; }
@@ -339,8 +305,9 @@
 
     .skill-card:hover {
       border-color: var(--primary);
-      background: rgba(99, 102, 241, 0.1);
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 110, 0.1));
       transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
     }
 
     .skill-icon {
@@ -358,22 +325,24 @@
       color: var(--primary);
       font-weight: 600;
       margin-bottom: 1rem;
+      text-shadow: 0 0 5px rgba(0, 217, 255, 0.5);
     }
 
     .skill-bar {
       width: 100%;
       height: 6px;
-      background: rgba(99, 102, 241, 0.1);
+      background: rgba(0, 217, 255, 0.1);
       border-radius: 10px;
       overflow: hidden;
     }
 
     .skill-progress {
       height: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
       border-radius: 10px;
       width: 0;
       animation: fillBar 1.5s ease-out forwards;
+      box-shadow: 0 0 15px var(--primary);
     }
 
     @keyframes fillBar {
@@ -384,6 +353,7 @@
 
     .projects-section {
       padding: 6rem 2rem;
+      background: linear-gradient(135deg, rgba(10, 14, 39, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
     }
 
     .projects-grid {
@@ -393,14 +363,15 @@
     }
 
     .project-card {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.05));
-      border: 1px solid rgba(99, 102, 241, 0.2);
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 110, 0.05));
+      border: 2px solid rgba(0, 217, 255, 0.3);
       border-radius: 20px;
       overflow: hidden;
       opacity: 0;
       animation: projectAppear 0.6s ease-out forwards;
       transition: all 0.4s ease;
       cursor: pointer;
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
     }
 
     .project-card:nth-child(1) { animation-delay: 0.1s; }
@@ -421,7 +392,7 @@
     .project-card:hover {
       border-color: var(--primary);
       transform: translateY(-15px);
-      box-shadow: 0 30px 60px rgba(99, 102, 241, 0.2);
+      box-shadow: 0 0 50px rgba(0, 217, 255, 0.3), 0 30px 60px rgba(0, 0, 0, 0.5);
     }
 
     .project-image {
@@ -457,16 +428,18 @@
     }
 
     .tag {
-      background: rgba(99, 102, 241, 0.2);
+      background: rgba(0, 217, 255, 0.2);
       color: var(--primary);
       padding: 0.35rem 0.75rem;
       border-radius: 20px;
       font-size: 0.8rem;
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
     }
 
     .achievements-section {
       padding: 6rem 2rem;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(236, 72, 153, 0.05));
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 14, 39, 0.6) 100%);
     }
 
     .achievements-grid {
@@ -480,6 +453,10 @@
       padding: 2rem;
       opacity: 0;
       animation: achievementAppear 0.6s ease-out forwards;
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 110, 0.05));
+      border: 2px solid rgba(0, 217, 255, 0.2);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
     }
 
     .achievement-item:nth-child(1) { animation-delay: 0.1s; }
@@ -498,6 +475,11 @@
       }
     }
 
+    .achievement-item:hover {
+      border-color: var(--primary);
+      box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+    }
+
     .achievement-icon {
       font-size: 3rem;
       margin-bottom: 1rem;
@@ -508,6 +490,7 @@
       font-weight: bold;
       color: var(--primary);
       margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
     }
 
     .achievement-label {
@@ -522,6 +505,7 @@
       justify-content: center;
       padding: 6rem 2rem;
       text-align: center;
+      background: linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%);
     }
 
     .contact-content {
@@ -536,6 +520,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      text-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
     }
 
     .contact-description {
@@ -556,36 +541,29 @@
       transition: all 0.3s ease;
       font-size: 1rem;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+      color: var(--darker);
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.4);
+      border: 2px solid var(--primary);
     }
 
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 0 50px rgba(0, 217, 255, 0.6);
     }
 
     footer {
-      background: rgba(10, 15, 31, 0.8);
-      border-top: 1px solid rgba(99, 102, 241, 0.1);
+      background: rgba(0, 0, 0, 0.9);
+      border-top: 2px solid rgba(0, 217, 255, 0.2);
       padding: 2rem;
       text-align: center;
       color: var(--gray);
+      box-shadow: 0 -10px 30px rgba(0, 217, 255, 0.1);
     }
 
     @media (max-width: 768px) {
-      .timeline-pathway,
-      .timeline-progress {
-        left: 20px;
-      }
-
       .timeline-section {
         justify-content: flex-start !important;
         padding: 4rem 2rem 4rem 80px;
-      }
-
-      .timeline-dot {
-        left: 20px;
       }
 
       .timeline-content {
@@ -628,9 +606,8 @@
   </style>
 </head>
 <body>
-  <!-- Timeline Pathway -->
-  <div class="timeline-pathway"></div>
-  <div class="timeline-progress"></div>
+  <!-- Zigzag Path Canvas with Glowing Ball -->
+  <canvas id="scrollCanvas"></canvas>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -647,7 +624,6 @@
 
   <!-- Experience Timeline -->
   <section class="timeline-section left">
-    <div class="timeline-dot"></div>
     <div class="timeline-content">
       <div class="timeline-card">
         <div class="timeline-year">📚 2019 - Present</div>
@@ -659,7 +635,6 @@
 
   <!-- Journey Point 2 -->
   <section class="timeline-section right">
-    <div class="timeline-dot"></div>
     <div class="timeline-content">
       <div class="timeline-card">
         <div class="timeline-year">📼 2017 - 2019</div>
@@ -671,7 +646,6 @@
 
   <!-- Journey Point 3 -->
   <section class="timeline-section left">
-    <div class="timeline-dot"></div>
     <div class="timeline-content">
       <div class="timeline-card">
         <div class="timeline-year">🎓 2015 - 2017</div>
@@ -833,67 +807,173 @@
   </footer>
 
   <script>
-    class ScrollJourney {
+    class ZigzagScrollBall {
       constructor() {
-        this.progress = document.querySelector('.timeline-progress');
+        this.canvas = document.getElementById('scrollCanvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.ballRadius = 15;
+        this.ballX = 50;
+        this.ballY = 0;
+        this.direction = 1; // 1 for right, -1 for left
+        this.zigzagWidth = 150;
+        this.gapBetweenZigzag = 250;
+        this.centerX = window.innerWidth / 2;
+        
+        this.resizeCanvas();
         this.init();
       }
 
+      resizeCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+      }
+
       init() {
-        this.attachEventListeners();
-        this.observeElements();
+        window.addEventListener('resize', () => this.resizeCanvas());
+        window.addEventListener('scroll', () => this.update());
+        this.update();
       }
 
-      attachEventListeners() {
-        window.addEventListener('scroll', () => this.updateProgress());
-        window.addEventListener('scroll', () => this.handleScrollAnimations());
-      }
-
-      updateProgress() {
+      update() {
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = (window.scrollY / scrollHeight) * 100;
-        this.progress.style.height = scrolled + '%';
+        const scrolled = window.scrollY;
+        const scrollPercent = scrolled / scrollHeight;
+        
+        this.ballY = scrollPercent * this.canvas.height;
+        
+        // Calculate zigzag position
+        const numZigzags = Math.floor(scrolled / this.gapBetweenZigzag);
+        const positionInZigzag = (scrolled % this.gapBetweenZigzag) / this.gapBetweenZigzag;
+        
+        this.direction = numZigzags % 2 === 0 ? 1 : -1;
+        
+        // Calculate X position with zigzag
+        const zigzagX = this.centerX + (this.direction * this.zigzagWidth * (positionInZigzag * 2 - 1));
+        this.ballX = zigzagX;
+        
+        this.draw();
       }
 
-      observeElements() {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                if (entry.target.classList.contains('timeline-content')) {
-                  entry.target.classList.add('in-view');
-                }
-
-                if (entry.target.classList.contains('timeline-dot')) {
-                  entry.target.classList.add('active');
-                }
-
-                if (entry.target.classList.contains('skill-progress')) {
-                  const level = entry.target.getAttribute('data-level');
-                  entry.target.style.width = level + '%';
-                }
-              }
-            });
-          },
-          { threshold: 0.2, rootMargin: '0px 0px -100px 0px' }
-        );
-
-        document.querySelectorAll('.timeline-content').forEach(el => observer.observe(el));
-        document.querySelectorAll('.timeline-dot').forEach(el => observer.observe(el));
-        document.querySelectorAll('.skill-progress').forEach(el => observer.observe(el));
+      draw() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Draw glowing path
+        this.drawPath();
+        
+        // Draw ball
+        this.drawBall();
       }
 
-      handleScrollAnimations() {
-        const hero = document.querySelector('.hero');
-        if (hero) {
-          const scrollY = window.scrollY;
-          hero.style.transform = `translateY(${scrollY * 0.5}px)`;
+      drawPath() {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const totalSegments = Math.ceil(scrollHeight / this.gapBetweenZigzag);
+        
+        let startY = 0;
+        let direction = 1;
+        let prevX = this.centerX;
+        
+        for (let i = 0; i <= totalSegments; i++) {
+          const endY = Math.min((i + 1) * this.gapBetweenZigzag, scrollHeight);
+          const currentX = this.centerX + (direction * this.zigzagWidth);
+          
+          // Draw line with gradient
+          this.drawGlowingLine(prevX, startY, currentX, endY);
+          
+          prevX = currentX;
+          startY = endY;
+          direction *= -1;
         }
+      }
+
+      drawGlowingLine(x1, y1, x2, y2) {
+        // Outer glow
+        this.ctx.strokeStyle = 'rgba(0, 217, 255, 0.2)';
+        this.ctx.lineWidth = 40;
+        this.ctx.lineCap = 'round';
+        this.ctx.lineJoin = 'round';
+        this.ctx.beginPath();
+        this.ctx.moveTo(x1, y1);
+        this.ctx.lineTo(x2, y2);
+        this.ctx.stroke();
+        
+        // Middle glow
+        this.ctx.strokeStyle = 'rgba(0, 217, 255, 0.4)';
+        this.ctx.lineWidth = 20;
+        this.ctx.beginPath();
+        this.ctx.moveTo(x1, y1);
+        this.ctx.lineTo(x2, y2);
+        this.ctx.stroke();
+        
+        // Core line
+        this.ctx.strokeStyle = 'rgba(0, 217, 255, 0.8)';
+        this.ctx.lineWidth = 8;
+        this.ctx.beginPath();
+        this.ctx.moveTo(x1, y1);
+        this.ctx.lineTo(x2, y2);
+        this.ctx.stroke();
+      }
+
+      drawBall() {
+        // Outer glow
+        const gradient1 = this.ctx.createRadialGradient(this.ballX, this.ballY, 0, this.ballX, this.ballY, this.ballRadius * 3);
+        gradient1.addColorStop(0, 'rgba(0, 217, 255, 0.3)');
+        gradient1.addColorStop(1, 'rgba(0, 217, 255, 0)');
+        this.ctx.fillStyle = gradient1;
+        this.ctx.fillRect(this.ballX - this.ballRadius * 3, this.ballY - this.ballRadius * 3, this.ballRadius * 6, this.ballRadius * 6);
+        
+        // Middle glow
+        const gradient2 = this.ctx.createRadialGradient(this.ballX, this.ballY, 0, this.ballX, this.ballY, this.ballRadius * 1.5);
+        gradient2.addColorStop(0, 'rgba(0, 217, 255, 0.6)');
+        gradient2.addColorStop(1, 'rgba(255, 0, 110, 0.2)');
+        this.ctx.fillStyle = gradient2;
+        this.ctx.beginPath();
+        this.ctx.arc(this.ballX, this.ballY, this.ballRadius * 1.5, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // Main ball with gradient
+        const gradient3 = this.ctx.createRadialGradient(this.ballX - 5, this.ballY - 5, 0, this.ballX, this.ballY, this.ballRadius);
+        gradient3.addColorStop(0, '#00d9ff');
+        gradient3.addColorStop(0.5, '#ff006e');
+        gradient3.addColorStop(1, '#ffbe0b');
+        this.ctx.fillStyle = gradient3;
+        this.ctx.beginPath();
+        this.ctx.arc(this.ballX, this.ballY, this.ballRadius, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // Ball border
+        this.ctx.strokeStyle = '#ffffff';
+        this.ctx.lineWidth = 2;
+        this.ctx.beginPath();
+        this.ctx.arc(this.ballX, this.ballY, this.ballRadius, 0, Math.PI * 2);
+        this.ctx.stroke();
       }
     }
 
+    // Initialize scroll ball
     document.addEventListener('DOMContentLoaded', () => {
-      new ScrollJourney();
+      new ZigzagScrollBall();
+      
+      // Scroll animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (entry.target.classList.contains('timeline-content')) {
+                entry.target.classList.add('in-view');
+              }
+
+              if (entry.target.classList.contains('skill-progress')) {
+                const level = entry.target.getAttribute('data-level');
+                entry.target.style.width = level + '%';
+              }
+            }
+          });
+        },
+        { threshold: 0.2, rootMargin: '0px 0px -100px 0px' }
+      );
+
+      document.querySelectorAll('.timeline-content').forEach(el => observer.observe(el));
+      document.querySelectorAll('.skill-progress').forEach(el => observer.observe(el));
     });
   </script>
 </body>
