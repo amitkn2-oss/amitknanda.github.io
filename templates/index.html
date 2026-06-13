@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Dashboard - Elegant Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">✨ Portfolio</div>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#activities">Activity</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Loading...</h1>
+        <p>Scroll down to explore</p>
+        <button class="cta-button" onclick="scrollToSection('.projects')">Explore Now</button>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats"></section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="activities">
+      <h2 class="section-title">Recent Activity</h2>
+      <div class="activity-list"></div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="activities" style="padding: 6rem 0; text-align: center;">
+      <h2 class="section-title">Get In Touch</h2>
+      <p style="color: var(--gray); font-size: 1.1rem; margin-top: 2rem;">
+        Have a question or want to collaborate? Feel free to reach out!
+      </p>
+      <button class="cta-button" style="margin-top: 2rem;">Send Message</button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Personal Dashboard. Built with ❤️ using Python, Flask & Modern CSS.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
